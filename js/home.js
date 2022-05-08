@@ -15,6 +15,7 @@ function actionToggle() {
 
 window.onload = function() {
     let user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
     let innerHTML = `
     <div class="container">
         <header>
@@ -110,22 +111,18 @@ function add_task() {
     var newtask = { 'title': title, 'date': date, 'description': description, 'status': 'in progress' };
 
     tasks.push(newtask);
-
-    console.log(tasks);
+    user.tasks = tasks;
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    for (var u of users) {
         if (u.username == user.username) {
-            u.tasks = [];
-            u.tasks = tasks;
+            u = user;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             tasks_home();
-            return;
         }
-    });
-
+    }
 }
 
 function task_form() {
@@ -185,16 +182,15 @@ function complete_task(id) {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    for (var u of users) {
         if (u.username == user.username) {
             u.tasks = [];
             u.tasks = user.tasks;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             tasks_home();
-            return;
         }
-    });
+    }
 }
 
 function tasks_home() {
@@ -267,16 +263,16 @@ function add_event() {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    user.events = events;
+    for (var u of users) {
         if (u.username == user.username) {
             u.events = [];
             u.events = events;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             events_home();
-            return;
         }
-    });
+    }
 }
 
 function events_home() {
@@ -369,16 +365,15 @@ function complete_event(id) {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    for (var u of users) {
         if (u.username == user.username) {
             u.events = [];
             u.events = user.events;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             events_home();
-            return;
         }
-    });
+    }
 }
 
 /****** Goals Functions ******/
@@ -447,16 +442,16 @@ function add_goal() {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    user.goals = goals;
+    for (var u of users) {
         if (u.username == user.username) {
             u.goals = [];
             u.goals = goals;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             goals_home();
-            return;
         }
-    });
+    }
 }
 
 function goals_home() {
@@ -549,16 +544,15 @@ function complete_goal(id) {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    for (var u of users) {
         if (u.username == user.username) {
             u.goals = [];
             u.goals = user.goals;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             goals_home();
-            return;
         }
-    });
+    }
 }
 
 /****** Reminders Functions ******/
@@ -627,16 +621,16 @@ function add_reminder() {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    user.reminders = reminders;
+    for (var u of users) {
         if (u.username == user.username) {
             u.reminders = [];
             u.reminders = reminders;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             reminders_home();
-            return;
         }
-    });
+    }
 }
 
 function complete_reminder(id) {
@@ -654,16 +648,15 @@ function complete_reminder(id) {
 
     let users = JSON.parse(localStorage.getItem('users'));
 
-    users.every(u => {
+    for (var u of users) {
         if (u.username == user.username) {
             u.reminders = [];
             u.reminders = user.reminders;
             localStorage.setItem('users', JSON.stringify(users));
             localStorage.setItem('user', JSON.stringify(user));
             reminders_home();
-            return;
         }
-    });
+    }
 }
 
 function reminders_home() {
