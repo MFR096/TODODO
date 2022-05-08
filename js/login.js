@@ -18,12 +18,12 @@ function login_form() {
     let hash = CryptoJS.SHA512(password).toString(CryptoJS.enc.Base64);
 
     //check if there is a user with the username and password
-    users.every(user => {
+    for (const user of users) {
         if ((user.username == username) && (user.pswrd == hash)) {
             crt_user = user;
-            return;
+            break;
         }
-    });
+    }
 
     if (crt_user) {
         localStorage.setItem('session', 'valid');
