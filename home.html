@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style/dycalendar.css">
+    <link rel="stylesheet" href="style/home.style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="js/home.js"></script>
+</head>
+
+<body>
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box" id="main-body">
+            <div class="container">
+                <header>
+                    <a href="#" class="logo">TO DO DOO</a>
+                    <ul>
+                        <li><a id="myLink" href="#" onclick="logout();return false;">Log Out</a></li>
+                    </ul>
+                </header>
+                <ul class="thumb">
+                    <li><img src="img/task.png" onclick="tasks_home()"></li>
+                    <li><img src="img/event.png" onclick="events_home()"></li>
+                    <li><img src="img/goal.png" onclick="goals_home()"></li>
+                    <li><img src="img/reminder.png" onclick="reminders_home()"></li>
+                </ul>
+                <div class="box">
+                    <h3>My Tasks</h3>
+                </div>
+                <div class="box-clock">
+                    <div id="dycalendar"></div>
+                </div>
+            </div>
+            <div class="action" onclick="actionToggle();">
+                <span>+</span>
+                <ul>
+                    <li><img src="img/task.png" alt="" onclick="task_form()"></li>
+                    <li><img src="img/event.png" alt="" onclick="event_form()"></li>
+                    <li><img src="img/goal.png" alt="" onclick="goal_form()"></li>
+                    <li><img src="img/reminder.png" alt="" onclick="reminder_form()"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script src="js/dycalendar.js"></script>
+    <script>
+        dycalendar.draw({
+            target: '#dycalendar',
+            type: 'month',
+            dayformat: 'full',
+            highlighttargetdate: true,
+            prevnextbutton: 'show'
+        })
+    </script>
+</body>
+
+</html>
